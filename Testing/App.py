@@ -24,9 +24,14 @@ def place_data():
     if request.method == 'GET':
         country = request.args.get('country_name')
         coords = Find_coords.find_coords(country)
+        if "Error" in coords:
+            return render_template("error.html", error=coords['Error'])
         coords = coords['latitude'] + ',' + coords['longitude']
         dates = Find_valid_dates.find_valid_dates(years)
         valid_eclipses = Check_dates.get_valid_eclipses(dates, coords)
+        # Check if the valid_eclipses list is empty
+        if not valid_eclipses:
+            return render_template("error.html", error="No eclipses found.")
         return render_template("valid_eclipses.html", valid_eclipses=valid_eclipses, country=country)
 
 
