@@ -6,12 +6,15 @@
     <script src="{{ url_for('static',filename='scripts/test.js') }}"></script>
 </head>
 <body>
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loader"></div>
+    </div>
     <h1>Enter a your Street Name</h1>
     <form action="/" method="POST">
         <label for="country">Street Name:</label>
         <input type="text" id="country" name="country" placeholder="Enter a street name...">
         <ul id="autocomplete"></ul>
-        <input type="submit" value="Submit">
+        <input type="submit" id="submit" value="Submit">
     </form>
 </body>
 </html>

@@ -27,8 +27,11 @@ def place_data():
         if "Error" in coords:
             return render_template("error.html", error=coords['Error'])
         coords = coords['latitude'] + ',' + coords['longitude']
+        # how to make loading screen while the next functions are running?
         dates = Find_valid_dates.find_valid_dates(years)
         valid_eclipses = Check_dates.get_valid_eclipses(dates, coords)
+        if "Error" in valid_eclipses:
+            return render_template("error.html", error=valid_eclipses['Error'])
         # Check if the valid_eclipses list is empty
         if not valid_eclipses:
             return render_template("error.html", error="No eclipses found.")

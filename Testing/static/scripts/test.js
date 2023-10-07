@@ -1,6 +1,13 @@
 document.addEventListener('DOMContentLoaded', function () {
     const streetInput = document.getElementById('country');
     const autocompleteResults = document.getElementById('autocomplete');
+    const loadingButton = document.getElementById('submit');
+    const loadingOverlay = document.getElementById('loading-overlay');
+
+    loadingButton.addEventListener('click', () => {
+        loadingOverlay.style.display = 'block'; // Display the loading overlay
+      // Change 2000 to the desired delay in milliseconds
+    });
 
     // Define the Nominatim API endpoint.
     const nominatimUrl = 'https://nominatim.openstreetmap.org/search';
@@ -56,3 +63,4 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+

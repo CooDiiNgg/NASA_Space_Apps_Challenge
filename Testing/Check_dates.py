@@ -8,11 +8,14 @@ def get_valid_eclipses(dates, coords):
         if response.status_code == 200:
             eclipse_data = response.json()
             if "error" not in eclipse_data:
-                valid_eclipses.append({
-                    "date": date,
-                    "duration": eclipse_data["properties"]["duration"],
-                    "begining": eclipse_data["properties"]["local_data"][0]["time"],
-                    "maximum": eclipse_data["properties"]["local_data"][1]["time"],
-                    "end": eclipse_data["properties"]["local_data"][2]["time"],
-                })
+                try:
+                    valid_eclipses.append({
+                        "date": date,
+                        "duration": eclipse_data["properties"]["duration"],
+                        "begining": eclipse_data["properties"]["local_data"][0]["time"],
+                        "maximum": eclipse_data["properties"]["local_data"][1]["time"],
+                        "end": eclipse_data["properties"]["local_data"][2]["time"],
+                    })
+                except:
+                    return {"Error": "Something went wrong."}
     return valid_eclipses
