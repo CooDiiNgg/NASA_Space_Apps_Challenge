@@ -39,12 +39,17 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
     // Event listener for input changes.
     streetInput.addEventListener('input', () => {
         const query = streetInput.value.trim();
 
         // Fetch and display autocomplete results when there's a query.
-        if (query.length > 0) {
+        if (query.length > 3) {
+            sleep(2000);
             fetchAutocompleteResults(query);
         } else {
             autocompleteResults.innerHTML = ''; // Clear results when the input is empty.
