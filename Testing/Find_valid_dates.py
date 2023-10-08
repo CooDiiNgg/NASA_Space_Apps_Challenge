@@ -4,7 +4,7 @@ from datetime import datetime
 def find_valid_dates(years):
     valid_dates = []
     current_year = int(datetime.now().strftime("%Y"))
-    for year in range(current_year, current_year + years, 1):
+    for year in range(current_year + 1, current_year + years, 1):
         url = f"https://aa.usno.navy.mil/api/eclipses/solar/year?year={year}"
         response = requests.get(url)
         if response.status_code == 200:

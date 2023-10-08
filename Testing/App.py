@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 import Find_coords
 import Find_valid_dates
 import Check_dates
-import requests
+from datetime import datetime
 
 #some constants
 years = 5
@@ -35,7 +35,11 @@ def place_data():
         # Check if the valid_eclipses list is empty
         if not valid_eclipses:
             return render_template("error.html", error="No eclipses found.")
-        return render_template("valid_eclipses.html", valid_eclipses=valid_eclipses, country=country)
+
+        time = valid_eclipses[0]["date"] + "T" + valid_eclipses[0]["begining"][:-2]
+        time = int(datetime.strptime(time, '%Y-%m-%dT%H:%M:%S').timestamp())
+        time = time - int(datetime.now().timestamp())
+        return render_template("valid_eclipses.html", valid_eclipses=valid_eclipses, country=country, time=time)
 
 
 port = 9898
