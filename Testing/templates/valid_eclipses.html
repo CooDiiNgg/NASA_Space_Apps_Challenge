@@ -50,15 +50,20 @@
 
         .countdown-container {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            justify-content: top;
+            align-items: top;
+            padding: 0;
+            height: 10%;
         }
         .countdown-timer {
             font-size: 2em;
-            background-color: #fff; /* White background color */
+            background-color: #34e16e;
+            width: 100%;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
             padding: 20px;
-            border-radius: 10px;
+            border-radius: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
         }
 
@@ -67,19 +72,6 @@
             display: block;
             font-size: 1.2em;
             margin-bottom: 10px;
-        }
-        .countdown-timer span {
-            display: inline-block;
-            font-size: 1.5em;
-            margin: 0 10px;
-            color: #4CAF50; /* Green color for timer digits */
-        }
-
-        .countdown-timer:after {
-            content: "Remaining";
-            display: block;
-            font-size: 1.2em;
-            margin-top: 10px;
         }
     </style>
 </head>
